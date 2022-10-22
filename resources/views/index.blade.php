@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- POPULAR GAMES -->
     <div class="container mx-auto px-4">
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Popular Games</h2>
-        <div class="popular-games text-sm grid grid-cols-6 gap-12 border-b border-gray-800 pb-16">
-            <div class="game mt-8">
-                <div class="relative inline-block">
+        <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 border-b border-gray-800 pb-16">
+            <div class="game mt-8 mx-auto lg:mx-0">
+                <div class="mx-auto lg:mx-0 relative inline-block">
                     <a href="#">
                         <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
                     </a>
@@ -18,7 +19,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">VALORANT</a>
                 <div class="text-gray-400 mt-1">PC</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://global-img.gamergen.com/cs-go-counter-strike-global-offensive-cover-jaquette_0280031B00789937.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -32,7 +33,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Counter Strike : Global Offensive</a>
                 <div class="text-gray-400 mt-1">PC</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://i.pinimg.com/474x/37/09/e5/3709e5fc07c93f1d39a98826cf000748--rockets-gaming.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -46,7 +47,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">ROCKET LEAGUE</a>
                 <div class="text-gray-400 mt-1">Nintendo Switch</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://www.mobygames.com/images/covers/l/607886-star-wars-jedi-fallen-order-xbox-one-front-cover.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -60,7 +61,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">STAR WARS - Jedi Fallen Order</a>
                 <div class="text-gray-400 mt-1">Playstation 5</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://cdn.cdkeys.com/500x706/media/catalog/product/f/i/fifa-22-pc-game-origin-cover_14_.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -74,7 +75,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">ANIMAL CROSSING</a>
                 <div class="text-gray-400 mt-1">Nintendo DS</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://images.nintendolife.com/games/wiiu/lego_movie_videogame/cover_large.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -89,7 +90,7 @@
                 <div class="text-gray-400 mt-1">WII U</div>
             </div>
             <!-- LIGNE 2 -->
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://i.pinimg.com/474x/37/09/e5/3709e5fc07c93f1d39a98826cf000748--rockets-gaming.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -103,7 +104,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">ROCKET LEAGUE</a>
                 <div class="text-gray-400 mt-1">Nintendo Switch</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://cdn.cdkeys.com/500x706/media/catalog/product/f/i/fifa-22-pc-game-origin-cover_14_.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -117,7 +118,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">ANIMAL CROSSING</a>
                 <div class="text-gray-400 mt-1">Nintendo DS</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -131,7 +132,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">VALORANT</a>
                 <div class="text-gray-400 mt-1">PC</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://images.nintendolife.com/games/wiiu/lego_movie_videogame/cover_large.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -145,7 +146,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">LEGO MOVIE</a>
                 <div class="text-gray-400 mt-1">WII U</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://global-img.gamergen.com/cs-go-counter-strike-global-offensive-cover-jaquette_0280031B00789937.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -159,7 +160,7 @@
                 <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Counter Strike : Global Offensive</a>
                 <div class="text-gray-400 mt-1">PC</div>
             </div>
-            <div class="game mt-8">
+            <div class="game mt-8 mx-auto lg:mx-0">
                 <div class="relative inline-block">
                     <a href="#">
                         <img src="https://www.mobygames.com/images/covers/l/607886-star-wars-jedi-fallen-order-xbox-one-front-cover.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -174,12 +175,16 @@
                 <div class="text-gray-400 mt-1">Playstation 5</div>
             </div>
         </div>
-        <div class="flex my-10">
-            <div class="recently-viewed w-3/4 mr-32">
+
+        <div class="flex flex-col lg:flex-row my-10">
+
+            <!-- RECENTLY VIEWED -->
+
+            <div class="recently-viewed w-full lg:w-3/4 mr-0 lg:mr-32">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Recently Reviewed</h2>
                 <div class="recently-reviewed-container space-y-12 mt-8">
-                    <div class="game bg-gray-800 rounded-lg shadow-md flex px-6 py-6">
-                        <div class="relative flex-none">
+                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-1 lg:grid-cols-2">
+                        <div class="relative flex-none mx-auto lg:mx-0">
                             <a href="#">
                                 <img src="https://www.mobygames.com/images/covers/l/607886-star-wars-jedi-fallen-order-xbox-one-front-cover.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
                             </a>
@@ -189,16 +194,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ml-12">
+                        <div class="mx-auto mt-4 lg:mx-0 ml-12">
                             <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">STAR WARS - Jedi Fallen Order</a>
                             <div class="text-gray-400 mt-1">Playstation 5</div>
-                            <div class="mt-6 text-gray-400">
+                            <div class="mt-6 text-gray-400 hidden lg:block">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat enim, ab veritatis doloribus dolore totam id dignissimos excepturi neque vel consectetur aperiam nihil nam assumenda! Earum distinctio deserunt modi ab!
                             </div>
                         </div>
                     </div>
-                    <div class="game bg-gray-800 rounded-lg shadow-md flex px-6 py-6">
-                        <div class="relative flex-none">
+                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-1 lg:grid-cols-2"">
+                        <div class="relative flex-none mx-auto lg:mx-0">
                             <a href="#">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
                             </a>
@@ -208,16 +213,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ml-12">
+                        <div class="mx-auto mt-4 lg:mx-0 ml-12">
                             <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">VALORANT</a>
                             <div class="text-gray-400 mt-1">PC</div>
-                            <div class="mt-6 text-gray-400">
+                            <div class="mt-6 text-gray-400 hidden lg:block">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat enim, ab veritatis doloribus dolore totam id dignissimos excepturi neque vel consectetur aperiam nihil nam assumenda! Earum distinctio deserunt modi ab!
                             </div>
                         </div>
                     </div>
-                    <div class="game bg-gray-800 rounded-lg shadow-md flex px-6 py-6">
-                        <div class="relative flex-none">
+                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-1 lg:grid-cols-2"">
+                        <div class="relative flex-none mx-auto lg:mx-0">
                             <a href="#">
                                 <img src="https://i.pinimg.com/474x/37/09/e5/3709e5fc07c93f1d39a98826cf000748--rockets-gaming.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
                             </a>
@@ -227,17 +232,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ml-12">
+                        <div class="mx-auto mt-4 lg:mx-0 ml-12">
                             <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">ROCKET LEAGUE</a>
                             <div class="text-gray-400 mt-1">Nintendo Switch</div>
-                            <div class="mt-6 text-gray-400">
+                            <div class="mt-6 text-gray-400 hidden lg:block">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat enim, ab veritatis doloribus dolore totam id dignissimos excepturi neque vel consectetur aperiam nihil nam assumenda! Earum distinctio deserunt modi ab!
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="most-anticipated w-1/4">
+
+            <!-- MOST ANTICIPATED -->
+
+            <div class="most-anticipated lg:w-1/4 mt-12 lg:mt-0">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Most Anticipated</h2>
                 <div class="most-anticipated-container space-y-10 mt-8">
                     <div class="game flex">
