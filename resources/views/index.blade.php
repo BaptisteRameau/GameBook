@@ -183,7 +183,7 @@
             <div class="recently-viewed w-full lg:w-3/4 mr-0 lg:mr-32">
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Recently Reviewed</h2>
                 <div class="recently-reviewed-container space-y-12 mt-8">
-                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-1 lg:grid-cols-2">
+                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-2 lg:flex">
                         <div class="relative flex-none mx-auto lg:mx-0">
                             <a href="#">
                                 <img src="https://www.mobygames.com/images/covers/l/607886-star-wars-jedi-fallen-order-xbox-one-front-cover.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -194,7 +194,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mx-auto mt-4 lg:mx-0 ml-12">
+                        <div class="mx-auto mt-4 lg:mx-8 ml-12">
                             <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">STAR WARS - Jedi Fallen Order</a>
                             <div class="text-gray-400 mt-1">Playstation 5</div>
                             <div class="mt-6 text-gray-400 hidden lg:block">
@@ -202,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-1 lg:grid-cols-2"">
+                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-2 lg:flex">
                         <div class="relative flex-none mx-auto lg:mx-0">
                             <a href="#">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -213,7 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mx-auto mt-4 lg:mx-0 ml-12">
+                        <div class="mx-auto mt-4 lg:mx-8 ml-12">
                             <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">VALORANT</a>
                             <div class="text-gray-400 mt-1">PC</div>
                             <div class="mt-6 text-gray-400 hidden lg:block">
@@ -221,7 +221,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-1 lg:grid-cols-2"">
+                    <div class="game bg-gray-800 rounded-lg shadow-md px-6 py-6 grid grid-cols-2 lg:flex">
                         <div class="relative flex-none mx-auto lg:mx-0">
                             <a href="#">
                                 <img src="https://i.pinimg.com/474x/37/09/e5/3709e5fc07c93f1d39a98826cf000748--rockets-gaming.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
@@ -232,7 +232,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mx-auto mt-4 lg:mx-0 ml-12">
+                        <div class="mx-auto mt-4 lg:mx-8 ml-12">
                             <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-4">ROCKET LEAGUE</a>
                             <div class="text-gray-400 mt-1">Nintendo Switch</div>
                             <div class="mt-6 text-gray-400 hidden lg:block">
