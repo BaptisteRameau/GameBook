@@ -294,7 +294,7 @@
                     </div>
                 </div>
                 <h2 class="text-blue-500 uppercase tracking-wide font-semibold mt-16">Coming Soon</h2>
-                <div class="most-anticipated-container space-y-10 mt-8">
+                <div class="coming-soon-container space-y-10 mt-8">
                     <div class="game flex">
                         <a href="#">
                             <img src="https://cdkeyprices.com/images/games/5633431/the-forest-desktop-logo-all.jpg" alt="game cover" class="w-16 hover:opacity-75 transition ease-out duration-150"/>
