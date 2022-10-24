@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container mx-auto px-4">
-        <div class="game-details border-b border-gray-800 pb-12 flex">
+        <div class="game-details border-b border-gray-800 pb-12 flex flex-col md:flex-row lg:flex-row">
             <div class="flex-none">
                 <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game-cover" class="w-48">
             </div>
-            <div class="ml-12 mr-64">
-                <h2 class="font-semibold text-4xl">VALORANT</h2>
+            <div class="md:ml-12 lg:ml-12 lg:mr-64">
+                <h2 class="font-semibold text-4xl leading-tight mt-1">VALORANT</h2>
                 <div class="text-gray-400">
                     <span>FPS, Online</span>
                     &middot;
@@ -17,22 +17,26 @@
                 </div>
 
                 <div class="flex flex-wrap items-center mt-8">
-                    <div class="flex items-center">
-                        <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">90%</div>
-                        </div>
-                        <div class="ml-4 text-xs">
-                            Member <br> Score
-                        </div>
-                        <div class="flex items-center ml-12">
-                            <div class="w-16 h-16 bg-gray-800 rounded-full">
-                                <div class="font-semibold text-xs flex justify-center items-center h-full">95%</div>
+                    <div class="grid grid-row lg:grid-cols-2">
+                        <div class="flex">
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-gray-800 rounded-full">
+                                    <div class="font-semibold text-xs flex justify-center items-center h-full">90%</div>
+                                </div>
+                                <div class="ml-4 text-xs">
+                                    Member <br> Score
+                                </div>
                             </div>
-                            <div class="ml-4 text-xs">
-                                Critic <br> Score
+                            <div class="flex items-center ml-12">
+                                <div class="w-16 h-16 bg-gray-800 rounded-full">
+                                    <div class="font-semibold text-xs flex justify-center items-center h-full">95%</div>
+                                </div>
+                                <div class="ml-4 text-xs">
+                                    Critic <br> Score
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4 ml-12">
+                        <div class="flex items-center space-x-4 mt-4 lg:mt-0 lg:ml-12">
                             <div class="w-8 h-8 bg-gray-800 rounded-full flex justify-center items-center ml-8">
                                 <a href="#" class="hover:text-gray-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="w-5 h-5 fill-current"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm160 215.5v6.93c0 5.87-3.32 11.24-8.57 13.86l-15.39 7.7a15.485 15.485 0 0 1-15.53-.97l-18.21-12.14a15.52 15.52 0 0 0-13.5-1.81l-2.65.88c-9.7 3.23-13.66 14.79-7.99 23.3l13.24 19.86c2.87 4.31 7.71 6.9 12.89 6.9h8.21c8.56 0 15.5 6.94 15.5 15.5v11.34c0 3.35-1.09 6.62-3.1 9.3l-18.74 24.98c-1.42 1.9-2.39 4.1-2.83 6.43l-4.3 22.83c-.62 3.29-2.29 6.29-4.76 8.56a159.608 159.608 0 0 0-25 29.16l-13.03 19.55a27.756 27.756 0 0 1-23.09 12.36c-10.51 0-20.12-5.94-24.82-15.34a78.902 78.902 0 0 1-8.33-35.29V367.5c0-8.56-6.94-15.5-15.5-15.5h-25.88c-14.49 0-28.38-5.76-38.63-16a54.659 54.659 0 0 1-16-38.63v-14.06c0-17.19 8.1-33.38 21.85-43.7l27.58-20.69a54.663 54.663 0 0 1 32.78-10.93h.89c8.48 0 16.85 1.97 24.43 5.77l14.72 7.36c3.68 1.84 7.93 2.14 11.83.84l47.31-15.77c6.33-2.11 10.6-8.03 10.6-14.7 0-8.56-6.94-15.5-15.5-15.5h-10.09c-4.11 0-8.05-1.63-10.96-4.54l-6.92-6.92a15.493 15.493 0 0 0-10.96-4.54H199.5c-8.56 0-15.5-6.94-15.5-15.5v-4.4c0-7.11 4.84-13.31 11.74-15.04l14.45-3.61c3.74-.94 7-3.23 9.14-6.44l8.08-12.11c2.87-4.31 7.71-6.9 12.89-6.9h24.21c8.56 0 15.5-6.94 15.5-15.5v-21.7C359.23 71.63 422.86 131.02 441.93 208H423.5c-8.56 0-15.5 6.94-15.5 15.5z"/></svg>
@@ -68,13 +72,12 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class="images-container border-b border-gray-800 pb-12 mt-8">
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
-            <div class="grid grid-cols-3 gap-12 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
                 <div>
                     <a href="#">
                         <img src="https://www.journaldugeek.com/content/uploads/2022/01/template-jdg-2022-01-10t122520-146.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
