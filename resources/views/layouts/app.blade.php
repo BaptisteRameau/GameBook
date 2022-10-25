@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
+    @livewireStyles
     <title>GameBook</title>
 </head>
 <body class="bg-gray-900 text-white">
@@ -47,5 +48,6 @@
             © Baptiste RAMEAU | Dev'Ice Company
         </div>
     </footer>
+    @livewireScripts
 </body>
 </html>
