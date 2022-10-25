@@ -26,7 +26,8 @@ class GamesController extends Controller
         ])
         ->withBody("
             fields name, cover.url, first_release_date, platforms.abbreviation, rating;
-            where cover != null & first_release_date != null & rating != null
+            where cover != null & first_release_date != null
+            & platforms = (48,49,130,6)
             & (first_release_date >= {$before}
             & first_release_date < {$after});
             sort rating desc;
@@ -40,9 +41,10 @@ class GamesController extends Controller
         ])
         ->withBody("
             fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, created_at;
-            where cover != null & first_release_date != null & rating != null
+            where platforms = (48,49,130,6)
             & (first_release_date >= {$before}
-            & first_release_date < {$current});
+            & first_release_date < {$current}
+            & rating_count > 5);
             sort created_at desc;
             limit 3;
         ", 'text/plain')
@@ -53,10 +55,11 @@ class GamesController extends Controller
             'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
         ])
         ->withBody("
-            fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, updated_at;
-            where cover != null & first_release_date != null & rating != null
+            fields name, cover.url, first_release_date, rating_count;
+            where platforms = (48,49,130,6)
             & (first_release_date >= {$before}
-            & first_release_date < {$after4month});
+            & first_release_date < {$after4month}
+            & rating_count > 0);
             sort rating_count desc;
             limit 4;
         ", 'text/plain')
@@ -68,9 +71,9 @@ class GamesController extends Controller
         ])
         ->withBody("
             fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary;
-            where cover != null & first_release_date != null & rating != null
-            & first_release_date >= {$before};
-            sort first_release_date desc;
+            where platforms = (48,49,130,6)
+            & first_release_date >= {$current};
+            sort first_release_date asc;
             limit 4;
         ", 'text/plain')
         ->post('https://api.igdb.com/v4/games')->json();
