@@ -24,7 +24,7 @@ class MostAnticipated extends Component
                 'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
             ])
             ->withBody("
-            fields name, cover.url, first_release_date, rating_count;
+            fields name, cover.url, first_release_date, rating_count, slug;
             where platforms = (48,49,130,6)
             & (first_release_date >= {$before}
             & first_release_date < {$after4month}

@@ -23,7 +23,7 @@ class ComingSoon extends Component
                 'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
             ])
             ->withBody("
-            fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary;
+            fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, slug;
             where platforms = (48,49,130,6)
             & first_release_date >= {$current};
             sort first_release_date asc;
