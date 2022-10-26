@@ -4,16 +4,37 @@
     <div class="container mx-auto px-4">
         <div class="game-details border-b border-gray-800 pb-12 flex flex-col md:flex-row lg:flex-row">
             <div class="flex-none">
-                <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game-cover" class="w-48">
+                @if (isset($game['cover']))
+                    <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}" alt="game-cover">
+                @endif
             </div>
             <div class="md:ml-12 lg:ml-12 lg:mr-64">
-                <h2 class="font-semibold text-4xl leading-tight mt-1">VALORANT</h2>
+                <h2 class="font-semibold text-4xl leading-tight mt-1">{{ $game['name'] }}</h2>
                 <div class="text-gray-400">
-                    <span>FPS, Online</span>
+                    <span>
+                        @foreach ($game['genres'] as $genre)
+                            @if (array_key_exists('abbreviation', $genre))
+                                {{ $genre['name'] }}
+                            @endif
+                        @endforeach
+                    </span>
+
+                    <span>
+                        @if (isset($game['involved_companies']))
+                            &middot;
+                            {{ $game['involved_companies'][0]['company']['name'] }}
+                        @endif
+                    </span>
                     &middot;
-                    <span>Riot Games</span>
-                    &middot
-                    <span>PC</span>
+                    <span>
+                        @if (isset($game['platforms']))
+                            @foreach ($game['platforms'] as $platform)
+                                @if (array_key_exists('abbreviation', $platform))
+                                    {{ $platform['abbreviation'] }},
+                                @endif
+                            @endforeach
+                        @endif
+                    </span>
                 </div>
 
                 <div class="flex flex-wrap items-center mt-8">
@@ -21,7 +42,13 @@
                         <div class="flex">
                             <div class="flex items-center">
                                 <div class="w-16 h-16 bg-gray-800 rounded-full">
-                                    <div class="font-semibold text-xs flex justify-center items-center h-full">90%</div>
+                                    <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                        @if (array_key_exists('rating', $game))
+                                            {{ round($game['rating']).'%' }}
+                                        @else
+                                            -
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="ml-4 text-xs">
                                     Member <br> Score
@@ -29,7 +56,13 @@
                             </div>
                             <div class="flex items-center ml-12">
                                 <div class="w-16 h-16 bg-gray-800 rounded-full">
-                                    <div class="font-semibold text-xs flex justify-center items-center h-full">95%</div>
+                                    <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                        @if (array_key_exists('aggregated_rating', $game))
+                                            {{ round($game['aggregated_rating']).'%' }}
+                                        @else
+                                            -
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="ml-4 text-xs">
                                     Critic <br> Score
@@ -60,16 +93,22 @@
                         </div>
                     </div>
                     <p class="mt-12">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, cumque quia? Obcaecati dolorum optio impedit mollitia quas ipsum, nobis et unde est, beatae ducimus iste, libero animi tempora id magnam.
+                        @if (isset($game['summary']))
+                            {{ $game['summary'] }}
+                        @endif
                     </p>
 
                     <div class="mt-12">
-                        <button class="flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600
-                        rounded transition ease-in-out duration-150">
-                            <span class="ml-2">
-                                Play Trailer
-                            </span>
-                        </button>
+                        @if (isset($game['videos']))
+                            <a href="https://youtube.com/watch/{{ $game['videos'][0]['video_id'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600
+                            rounded transition ease-in-out duration-150">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 fill-current"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M188.3 147.1C195.8 142.8 205.1 142.1 212.5 147.5L356.5 235.5C363.6 239.9 368 247.6 368 256C368 264.4 363.6 272.1 356.5 276.5L212.5 364.5C205.1 369 195.8 369.2 188.3 364.9C180.7 360.7 176 352.7 176 344V167.1C176 159.3 180.7 151.3 188.3 147.1V147.1zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                                <span class="ml-2">
+                                    Play Trailer
+                                </span>
+                            </a>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -78,126 +117,55 @@
         <div class="images-container border-b border-gray-800 pb-12 mt-8">
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
-                <div>
-                    <a href="#">
-                        <img src="https://www.journaldugeek.com/content/uploads/2022/01/template-jdg-2022-01-10t122520-146.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltea3dd93cc82f3b59/63484defe9d2c541844df655/VALORANT_2022_EP5-3_Article_Banner_1920x1080_MB01.jpg?auto=webp&disable=upscale&height=504" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="https://i0.wp.com/hwp.com.tr/wp-content/uploads/2020/04/valorant-ranks.jpeg?resize=505%2C350&ssl=1" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-60">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="https://static.mensup.fr/22/2022/10/photo_article/760881/298870/1200-L-valorant-dvoile-harbor-le-vingtime-agent.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="https://jeu-bayrou.com/wp-content/uploads/2021/09/Meilleurs-parametres-Valorant-pour-un-meilleur-FPS.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="https://www.moyens.net/wp-content/uploads/2022/01/1642321015_Mises-a-jour-de-VALORANT-en-melee-a-venir-dans.jpg" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
-                    </a>
-                </div>
+                @if (isset($game['screenshots']))
+                @foreach ($game['screenshots'] as $screenshot)
+                    @if (array_key_exists('url', $screenshot))
+                        <div>
+                            <a href="{{ Str::replaceFirst('thumb', 'screenshot_huge', $screenshot['url']) }}">
+                                <img src="{{ Str::replaceFirst('thumb', 'screenshot_big', $screenshot['url']) }}" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
+                            </a>
+                        </div>
+                    @endif
+
+                @endforeach
+                @endif
             </div>
         </div>
 
         <div class="similar-games-container mt-8">
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Similar Games</h2>
             <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 pb-16">
-                <div class="game mt-8 mx-auto lg:mx-0">
-                    <div class="mx-auto lg:mx-0 relative inline-block">
-                        <a href="#">
-                            <img src="https://cdna.artstation.com/p/assets/images/images/036/947/866/large/ismael-fofana-valorant-game-poster-design.jpg?1619051884" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                80%
+                @foreach ($game['similar_games'] as $game)
+                    <div class="game mt-8 mx-auto lg:mx-0">
+                        <div class="mx-auto lg:mx-0 relative inline-block">
+                            @if (array_key_exists('cover', $game))
+                                <a href="{{ route('games.show', $game['slug']) }}">
+                                    <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
+                                </a>
+                            @endif
+                            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
+                                <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                    @if (array_key_exists('rating', $game))
+                                        {{ round($game['rating']).'%' }}
+                                    @else
+                                        -
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">VALORANT</a>
-                    <div class="text-gray-400 mt-1">PC</div>
-                </div>
-                <div class="game mt-8 mx-auto lg:mx-0">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="https://global-img.gamergen.com/cs-go-counter-strike-global-offensive-cover-jaquette_0280031B00789937.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                95%
-                            </div>
+                        <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{ $game['name'] }}</a>
+                        <div class="text-gray-400 mt-1">
+                            @if (isset($game['platforms']))
+                                @foreach ($game['platforms'] as $platform)
+                                    @if (array_key_exists('abbreviation', $platform))
+                                        {{ $platform['abbreviation'] }},
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">Counter Strike : Global Offensive</a>
-                    <div class="text-gray-400 mt-1">PC</div>
-                </div>
-                <div class="game mt-8 mx-auto lg:mx-0">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="https://i.pinimg.com/474x/37/09/e5/3709e5fc07c93f1d39a98826cf000748--rockets-gaming.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                80%
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">ROCKET LEAGUE</a>
-                    <div class="text-gray-400 mt-1">Nintendo Switch</div>
-                </div>
-                <div class="game mt-8 mx-auto lg:mx-0">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="https://www.mobygames.com/images/covers/l/607886-star-wars-jedi-fallen-order-xbox-one-front-cover.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                65%
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">STAR WARS - Jedi Fallen Order</a>
-                    <div class="text-gray-400 mt-1">Playstation 5</div>
-                </div>
-                <div class="game mt-8 mx-auto lg:mx-0">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="https://cdn.cdkeys.com/500x706/media/catalog/product/f/i/fifa-22-pc-game-origin-cover_14_.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                87%
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">ANIMAL CROSSING</a>
-                    <div class="text-gray-400 mt-1">Nintendo DS</div>
-                </div>
-                <div class="game mt-8 mx-auto lg:mx-0">
-                    <div class="relative inline-block">
-                        <a href="#">
-                            <img src="https://images.nintendolife.com/games/wiiu/lego_movie_videogame/cover_large.jpg" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
-                        </a>
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                40%
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">LEGO MOVIE</a>
-                    <div class="text-gray-400 mt-1">WII U</div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>

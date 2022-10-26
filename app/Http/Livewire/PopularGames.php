@@ -24,12 +24,12 @@ class PopularGames extends Component
                 'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
             ])
             ->withBody("
-                fields name, cover.url, first_release_date, platforms.abbreviation, rating;
+                fields name, cover.url, first_release_date, platforms.abbreviation, rating, slug, aggregated_rating;
                 where cover != null & first_release_date != null
                 & platforms = (48,49,130,6)
                 & (first_release_date >= {$before}
                 & first_release_date < {$after});
-                sort rating desc;
+                sort aggregated_rating desc;
                 limit 12;
             ", 'text/plain')
             ->post('https://api.igdb.com/v4/games')->json();
