@@ -94,44 +94,48 @@
             </div>
         </div>
 
-        <div class="images-container border-b border-gray-800 pb-12 mt-8">
-            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
-                @foreach ($game['screenshots'] as $screenshot)
-                    <div>
-                        <a href="{{ $screenshot['huge'] }}">
-                            <img src="{{ $screenshot['big'] }}" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="similar-games-container mt-8">
-            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Similar Games</h2>
-            <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 pb-16">
-                @foreach ($game['similarGames'] as $game)
-                    <div class="game mt-8 mx-auto lg:mx-0">
-                        <div class="mx-auto lg:mx-0 relative inline-block">
-                            <a href="{{ route('games.show', $game['slug']) }}">
-                                <img src="{{ $game['coverImageUrl'] }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
+        @if ($game['screenshots'])
+            <div class="images-container border-b border-gray-800 pb-12 mt-8">
+                <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+                    @foreach ($game['screenshots'] as $screenshot)
+                        <div>
+                            <a href="{{ $screenshot['huge'] }}">
+                                <img src="{{ $screenshot['big'] }}" alt="screenshot" class="hover:opacity-75 transition ease-in-out duration-150 w-96 h-70">
                             </a>
-                            @if ($game['member_rating'])
-                                <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                                    <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                        {{ $game['member_rating'] }}
-                                    </div>
-                                </div>
-                            @endif
                         </div>
-                        <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{ $game['name'] }}</a>
-                        <div class="text-gray-400 mt-1">
-                            {{ $game['platforms'] }}
-                        </div>
-                    </div>
-                @endforeach
-
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
+
+        @if ($game['similarGames'])
+            <div class="similar-games-container mt-8">
+                <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Similar Games</h2>
+                <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 pb-16">
+                    @foreach ($game['similarGames'] as $game)
+                        <div class="game mt-8 mx-auto lg:mx-0">
+                            <div class="mx-auto lg:mx-0 relative inline-block">
+                                <a href="{{ route('games.show', $game['slug']) }}">
+                                    <img src="{{ $game['coverImageUrl'] }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150 w-48 h-60">
+                                </a>
+                                @if ($game['member_rating'])
+                                    <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
+                                        <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                            {{ $game['member_rating'] }}
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                            <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{ $game['name'] }}</a>
+                            <div class="text-gray-400 mt-1">
+                                {{ $game['platforms'] }}
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
