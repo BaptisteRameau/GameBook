@@ -35,9 +35,5 @@ jobs:
       run: vendor/bin/phpunit
     - name: Check the duplicate code in app directory
       run: ./vendor/bin/phpcpd app/ --min-lines=5 --min-tokens=10
-    Only copy above part.
-    app/ => Directory in which we are checking the duplicate code. To add another directory copy paste the same command again with another directory.
-    --min-lines=5 => This will throw error when min 5 lines are duplicated. You can change this according to your requirement.
-    -min-tokens=10 => This will throw error when min 10 tokens are duplicated. You can change this according to your requirement.
     - name: Perform phpmd script
       run: ./vendor/bin/phpmd app/ github phpmdrules.xml
