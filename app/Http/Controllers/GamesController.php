@@ -103,7 +103,6 @@ class GamesController extends Controller
                 })->first() : null,
             ],
         ]);
-        dump($temp);
 
         return $temp;
     }
