@@ -36,5 +36,5 @@ jobs:
     # - name: Check the duplicate code in app directory
     #   run: ./vendor/bin/phpcpd app/ --min-lines=5 --min-tokens=10
     # Coding conventions
-    - name: Perform phpmd script
-      run: ./vendor/bin/phpmd app/ github phpmdrules.xml
+    # - name: Perform phpmd script
+    #   run: ./vendor/bin/phpmd app/ github phpmdrules.xml
