@@ -39,4 +39,16 @@ You can access the DigitalOcean hosted version of Gamebook by clicking this link
     <img src="https://github-readme-stats.vercel.app/api?username=BaptisteRameau">
 </p>
 
+## Screenshots
+
+### Games page
+![image](https://user-images.githubusercontent.com/67638790/204528890-7355fccf-39a6-4b59-8127-1f3f3d419a54.png)
+![image](https://user-images.githubusercontent.com/67638790/204528338-35e7639c-ba2b-4e27-b96b-ce8e86f4adbc.png)
+
+### Game page
+![image](https://user-images.githubusercontent.com/67638790/204528632-148e5609-0e46-428c-9e5c-401d8b44697e.png)
+![image](https://user-images.githubusercontent.com/67638790/204528746-d81a29dc-d2ea-4164-8fc4-0299a6158d0e.png)
+
+
+
 
