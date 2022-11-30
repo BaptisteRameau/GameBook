@@ -34,13 +34,6 @@ To continue, links redirecting to the official networks of the game will be pres
 
 You can access the DigitalOcean hosted version of Gamebook by clicking this link : **[Gamebook](https://walrus-app-rd4q4.ondigitalocean.app/)**
 
-## Stats
-
-<p align="center">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BaptisteRameau">
-    <img src="https://github-readme-stats.vercel.app/api?username=BaptisteRameau">
-</p>
-
 ## Screenshots
 
 ### Games page
