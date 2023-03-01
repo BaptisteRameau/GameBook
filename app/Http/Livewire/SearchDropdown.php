@@ -16,16 +16,17 @@ class SearchDropdown extends Component
         if (strlen($this->search) >= 2) {
             $this->searchResults = Http::withHeaders([
                 'Client-ID' => env('IGDB_CLIENT_ID'),
-                'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
+                'Authorization' => 'Bearer ' . env('IGDB_ACCESS_TOKEN'),
             ])
-            ->withBody("
+                ->withBody(
+                    "
                 search \"{$this->search}\";
                 fields name, slug, cover.url;
                 limit 6;",
-                'text/plain'
-            )
-            ->post('https://api.igdb.com/v4/games')
-            ->json();
+                    'text/plain'
+                )
+                ->post('https://api.igdb.com/v4/games')
+                ->json();
         }
 
         return view('livewire.search-dropdown');
