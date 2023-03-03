@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use App\Models\Chirp;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class GamesController extends Controller
 {
@@ -34,9 +38,30 @@ class GamesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $slug): RedirectResponse
     {
-        //
+        $game = Http::withHeaders([
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+            'Authorization' => 'Bearer ' . env('IGDB_ACCESS_TOKEN'),
+        ])
+            ->withBody("
+            fields name, cover.url, first_release_date, platforms.abbreviation, rating, slug, involved_companies.company.name, genres.name, aggregated_rating, summary, websites.*,
+            videos.*, screenshots.*, similar_games.cover.url, similar_games.name, similar_games.rating, similar_games.platforms.abbreviation, similar_games.slug;
+            where slug=\"{$slug}\";
+        ", 'text/plain')
+            ->post('https://api.igdb.com/v4/games')->json();
+
+        abort_if(!$game, 404);
+
+        $chirp = Chirp::create([
+            'user_id' => Auth::id(),
+            'game_id' => $game[0]['id'],
+            'message' => $request->message
+        ]);
+
+        $chirp->save();
+
+        return redirect(route('games.show', $slug));
     }
 
     /**
@@ -49,19 +74,20 @@ class GamesController extends Controller
     {
         $game = Http::withHeaders([
             'Client-ID' => env('IGDB_CLIENT_ID'),
-            'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
+            'Authorization' => 'Bearer ' . env('IGDB_ACCESS_TOKEN'),
         ])
-        ->withBody("
+            ->withBody("
             fields name, cover.url, first_release_date, platforms.abbreviation, rating, slug, involved_companies.company.name, genres.name, aggregated_rating, summary, websites.*,
             videos.*, screenshots.*, similar_games.cover.url, similar_games.name, similar_games.rating, similar_games.platforms.abbreviation, similar_games.slug;
             where slug=\"{$slug}\";
         ", 'text/plain')
-        ->post('https://api.igdb.com/v4/games')->json();
+            ->post('https://api.igdb.com/v4/games')->json();
 
-        abort_if(! $game, 404);
+        abort_if(!$game, 404);
 
         return view('game', [
             'game' => $this->formatGameForView($game[0]),
+            'chirps' => Chirp::with('user')->latest()->where('game_id', $game[0]['id'])->get(),
         ]);
     }
 
@@ -72,10 +98,10 @@ class GamesController extends Controller
             'genres' => isset($game['genres']) ? collect($game['genres'])->pluck('name')->implode(', ') : null,
             'involved_companies' => $game['involved_companies'][0]['company']['name'] ?? null,
             'platforms' => isset($game['platforms']) ? collect($game['platforms'])->pluck('abbreviation')->implode(', ') : null,
-            'member_rating' => array_key_exists('rating', $game) ? round($game['rating']).'%' : '-',
-            'critic_rating' => array_key_exists('aggregated_rating', $game) ? round($game['aggregated_rating']).'%' : '-',
+            'member_rating' => array_key_exists('rating', $game) ? round($game['rating']) . '%' : '-',
+            'critic_rating' => array_key_exists('aggregated_rating', $game) ? round($game['aggregated_rating']) . '%' : '-',
             'summary' => isset($game['summary']) ? $game['summary'] : null,
-            'trailer' => isset($game['videos']) ? 'https://youtube.com/embed/'.$game['videos'][0]['video_id'] : null,
+            'trailer' => isset($game['videos']) ? 'https://youtube.com/embed/' . $game['videos'][0]['video_id'] : null,
             'screenshots' => isset($game['screenshots']) ? collect($game['screenshots'])->map(function ($screenshot) {
                 return [
                     'huge' => Str::replaceFirst('thumb', 'screenshot_huge', $screenshot['url']),
@@ -86,7 +112,7 @@ class GamesController extends Controller
             'similarGames' => isset($game['similar_games']) ? collect($game['similar_games'])->map(function ($game) {
                 return collect($game)->merge([
                     'coverImageUrl' => isset($game['cover']) ? Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) : 'https://via.placeholder.com/264x352',
-                    'member_rating' => isset($game['rating']) ? round($game['rating']).'%' : '-',
+                    'member_rating' => isset($game['rating']) ? round($game['rating']) . '%' : '-',
                     'platforms' => array_key_exists('platforms', $game) ? collect($game['platforms'])->pluck('abbreviation')->implode(', ') : null,
                 ]);
             })->take(6) : null,
@@ -113,9 +139,16 @@ class GamesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(string $slug, int $id): View
     {
-        //
+        $chirp = Chirp::where('id', $id)->first();
+
+        $this->authorize('update', $chirp);
+
+        return view('chirps.edit', [
+            'slug' => $slug,
+            'chirp' => $chirp,
+        ]);
     }
 
     /**
@@ -125,9 +158,17 @@ class GamesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(string $slug, int $id): RedirectResponse
     {
-        //
+        $this->authorize('update', Chirp::where('id', $id)->first());
+
+        $validated = request()->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        Chirp::where('id', $id)->update($validated);
+
+        return redirect(route('games.show', $slug));
     }
 
     /**
@@ -136,8 +177,12 @@ class GamesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug, int $id): RedirectResponse
     {
-        //
+        $this->authorize('delete', Chirp::where('id', $id)->first());
+
+        Chirp::where('id', $id)->delete();
+
+        return redirect(route('games.show', $slug));
     }
 }
