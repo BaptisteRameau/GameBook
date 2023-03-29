@@ -46,15 +46,21 @@
                         </x-primary-button>
                     </div>
                     <div class="flex justify-between items-center">
-                        <div class="bg-gray-500 h-1 w-20"></div>
-                        <div class="text-center font-bold text-lg">ou se connecter avec</div>
-                        <div class="bg-gray-500 h-1 w-20"></div>
+                        <div class="bg-gray-500 h-1 w-32"></div>
+                        <div class="text-center font-bold text-lg">or sign in with</div>
+                        <div class="bg-gray-500 h-1 w-32"></div>
                     </div>
-                    <a href="/login/github" class="flex items-center justify-center px-4 py-2 mt-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg">
+                    <a href="/login/github" class="flex items-center justify-center px-4 py-2 mt-4 text-white font-semibold rounded-lg" style="background-color: #464646;">
                         <span class="mr-2">
                             <i class="fab fa-github text-white" style="font-size: 25px;"></i>
                         </span>
                         Login with GitHub
+                    </a>
+                    <a href="/login/google" class="flex items-center justify-center px-4 py-2 mt-4 hover:bg-gray-700 text-white font-semibold rounded-lg" style="background-color: #D84830;">
+                        <span class="mr-2">
+                            <i class="fab fa-google text-white" style="font-size: 25px;"></i>
+                        </span>
+                        Login with Google
                     </a>
                 </form>
             </x-guest-layout>
