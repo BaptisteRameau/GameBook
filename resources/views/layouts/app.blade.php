@@ -50,7 +50,7 @@
                 </div>
             </div>
             <a href="#" class="ml-3">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt="avatar" class="rounded-full w-10"/>
+                <img src="{{ Auth::user()->avatar }}" alt="avatar" class="rounded-full w-10"/>
             </a>
         </nav>
     </header>
