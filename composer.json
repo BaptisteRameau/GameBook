@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.37",
         "laravel/sanctum": "^3.0",
+        "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "phpmd/phpmd": "^2.13",
