@@ -25,9 +25,11 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/index', [GamesController::class, 'index'])->name('games.index');
 
+// SOCIALITE
 Route::get('/login/github', [LoginController::class, 'redirectToGithub']);
- 
-Route::get('/login/github/callback', [LoginController::class, 'handleCallback']);
+Route::get('/login/github/callback', [LoginController::class, 'handleCallbackGitHub']);
+Route::get('/login/google', [LoginController::class, 'redirectToGoogle']);
+Route::get('/login/google/callback', [LoginController::class, 'handleCallbackGoogle']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/games/{slug}', [GamesController::class, 'show'])->name('games.show');
